@@ -11,7 +11,6 @@ const totalLikes = (blogPosts) => {
 const favoriteBlog = (blogPosts) => {
   let mostLikes = {};
   let maxLikes = 0;
-  console.log(blogPosts);
 
   if (blogPosts === {}) {
     return {};
