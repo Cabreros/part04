@@ -37,6 +37,21 @@ test("verify if http post is successful", async () => {
   expect(blogsAtEnd).toHaveLength(initialBlogs.length + 1);
 });
 
+test("when likes is undefined default to 0", async () => {
+  const missingLikes = {
+    title: "Michael Cab",
+    author: "040-123123",
+    url: "http://localhost:3003/api/blogs",
+  };
+  if (!missingLikes.likes) {
+    const response = await api
+      .post("/api/blogs/")
+      .send({ ...missingLikes, likes: 0 });
+    console.log(response.body);
+    expect(response.body.likes).toBe(0);
+  }
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });
